@@ -39,8 +39,6 @@ public class ThreadLocal_07 {
 			public void get(){
 				System.out.println("A from "+Thread.currentThread().getName()+" get data:"+threadLocal.get());
 			}
-			
-			
 		}
 		
 		static class B{
