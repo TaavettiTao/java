@@ -8,6 +8,8 @@ package com.test;
  *   可能出现该对象输出的结果出现两个线程抢夺资源的情况，
  *   即可能会输出：babahaizi、hbaaiba等情况
  *
+ *
+ *
  */
 public class Test1 {
 	public static void main(String[] args) {
