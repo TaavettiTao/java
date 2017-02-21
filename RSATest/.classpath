@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="lib/commons-configuration-1.10.jar"/>
 	<classpathentry kind="lib" path="lib/bcprov-jdk15-143.jar"/>
 	<classpathentry kind="lib" path="lib/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="lib/commons-util-1.0-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
