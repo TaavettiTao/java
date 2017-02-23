@@ -29,6 +29,8 @@ import org.apache.commons.codec.binary.Base64;
 import com.cosw.commons.crypto.RSAUtil;
 import com.cosw.commons.crypto.RSAUtil.AlgorithmEnum;
 import com.cosw.commons.util.BytesUtil;
+import com.rsa.test.util.RSASignature;
+import com.rsa.test.util.StringUtil;
 
 
 /**
@@ -77,7 +79,18 @@ public class RSAUtilTest {
 		
 		genKeyPairTest();
 		
-	}
+		//SHA1WithRSA签名算法
+		//java.security.Signature signature = java.security.Signature.getInstance("SHA1WithRSA");
+		String modulus="8B6D8CAE9C9494FC1AE3C90E5869111447FA19F66F62D904787C973862D08B0056CA891ECA0CA7CF5D38407BA7AF8FC9A83624CDC46B9A47B0FEBAD0FC730D80C7C1CA1088731D758C6D26A3A2DF7BD7634EEA107B6D752609A16C9C671758A853135214425C58B0DD25779DFB070B08817F0828C72BEF11A5D7F998D0F81D49";
+		String exponent="10001";
+		String data="{\"txncode\":\"charge\",\"cardno\":\"2253123456781234\"}";
+		String hexData=StringUtil.byteArrayToHexString(data.getBytes());
+		String signData="8501C57883A26FFDA679403816E31BC3B455C5E04BDE47711BAF50A926151BEB0BE895E2563C1BE205D5E2054A1321FFF5A09D39677A4EE7A856AB1FD74F0A38641A868C5C7A781F89D2496D978DDF6B63E44110C52D58E5D1106271A75083A4E948D19B7BB9BE0040D85536FDAC1649015C2049586590CF878DFE110507E87A";
+		
+		boolean flag=RSASignature.verify(StringUtil.hexStringToByteArray(hexData), 
+				StringUtil.hexStringToByteArray(signData), modulus, exponent, 16);
+		System.out.println("验签结果："+flag);
+		}
 
 	public static void genKeyPairTest() throws Exception {
 		Map<String, Object> keyMap = RSAUtil.genKeyPair(1024);// 1152,1024
